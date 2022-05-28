@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- markStatus -->
+    <item android:drawable="@drawable/ic_circle_heart_icon_outline" android:state_checked="false" />
+    <!-- markChecked -->
+    <item android:drawable="@drawable/ic_circle_heart_icon_solid" android:state_checked="true" />
+    <!-- markDefault -->
+    <item android:drawable="@drawable/ic_circle_heart_icon_outline" />
+</selector>
