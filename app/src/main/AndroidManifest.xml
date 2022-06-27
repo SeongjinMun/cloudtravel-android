@@ -13,6 +13,28 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CloudTravel">
         <activity
+            android:name=".view.LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.SignUpActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.SettingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.AuthMainActivity"
+            android:exported="true"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="myapp" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".view.MainActivity"
             android:exported="true"
             android:label="@string/app_name">

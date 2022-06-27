@@ -1,7 +1,10 @@
 package com.example.cloudtravel.view;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.example.cloudtravel.R;
 
@@ -24,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
 
     private HomeFragment fragmentHome;
     private ActivityMainBinding binding;
+    private String fragmentName;
+    private MenuItem prevBottomNavigation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,16 +38,19 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         BottomNavigationView navView = findViewById(R.id.nav_view);
-//        FragmentManager fragmentManager = getSupportFragmentManager();
-//
-//        fragmentManager.beginTransaction().replace(R.id.nav_host_fragment_activity_main, fragmentHome, "home")
-//                .commitAllowingStateLoss();
 
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.navigation_home, R.id.navigation_profile, R.id.navigation_search).build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
+
+        if (savedInstanceState == null) {
+            Bundle extras = getIntent().getExtras();
+            if(extras == null) {
+                navView.setSelectedItemId(R.id.navigation_home);
+            }
+        }
 
         navView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener(){
             @Override

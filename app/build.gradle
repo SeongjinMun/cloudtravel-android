@@ -40,6 +40,7 @@ dependencies {
     implementation 'androidx.navigation:navigation-fragment:2.4.2'
     implementation 'androidx.navigation:navigation-ui:2.4.2'
     implementation 'com.google.android.gms:play-services-fido:18.1.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation 'junit:junit:4.13.2'
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
 
@@ -53,6 +54,8 @@ dependencies {
     // butterknife
     implementation "com.jakewharton:butterknife:10.1.0"
     annotationProcessor "com.jakewharton:butterknife-compiler:10.1.0"
+
+    implementation 'com.mobsandgeeks:android-saripaar:2.0.3'
 
     //retrofit2
     implementation "com.squareup.retrofit2:retrofit:2.9.0"
@@ -73,4 +76,8 @@ dependencies {
     // viewpager
     implementation "com.google.android.material:material:material_design_version"
     implementation "androidx.viewpager2:viewpager2:view_pager_version"
+
+    //For AWSMobileClient only:
+    implementation 'com.amazonaws:aws-android-sdk-mobile-client:2.16.0'
+    implementation 'com.amazonaws:aws-android-sdk-cognitoauth:2.16.0'
 }

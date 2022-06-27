@@ -54,8 +54,6 @@ public class CourseModel {
         return courseViewUrl;
     }
 
-    public String getCourseTags() {
-        return courseTags;
-    }
+    public String getCourseTags() { return courseTags; }
 
 }

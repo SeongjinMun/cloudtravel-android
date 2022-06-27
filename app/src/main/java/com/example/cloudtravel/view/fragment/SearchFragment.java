@@ -39,6 +39,7 @@ public class SearchFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
         viewModel.load();
 
 
@@ -73,7 +74,6 @@ public class SearchFragment extends Fragment {
     }
 
     private void observeViewModel() {
-
         viewModel.courses.observe(getViewLifecycleOwner(), courseModels -> {
             if (courseModels != null) {
                 Log.i("courses_observe", "OK");

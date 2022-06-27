@@ -4,12 +4,22 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/git-workspace/CloudTravel/app/src/main/res/font/font.xml" value="0.32037037037037036" />
+        <entry key="..\:/git-workspace/CloudTravel/app/src/main/res/layout/activity_auth_main.xml" value="0.34148550724637683" />
+        <entry key="..\:/git-workspace/CloudTravel/app/src/main/res/layout/activity_login.xml" value="0.3619791666666667" />
         <entry key="..\:/git-workspace/CloudTravel/app/src/main/res/layout/activity_main.xml" value="0.34148550724637683" />
+        <entry key="..\:/git-workspace/CloudTravel/app/src/main/res/layout/activity_recycler_item.xml" value="0.3619791666666667" />
+        <entry key="..\:/git-workspace/CloudTravel/app/src/main/res/layout/activity_setting.xml" value="0.34148550724637683" />
+        <entry key="..\:/git-workspace/CloudTravel/app/src/main/res/layout/activity_sign_up.xml" value="0.34148550724637683" />
         <entry key="..\:/git-workspace/CloudTravel/app/src/main/res/layout/fragment_dashboard.xml" value="0.34148550724637683" />
+        <entry key="..\:/git-workspace/CloudTravel/app/src/main/res/layout/fragment_filter.xml" value="0.34148550724637683" />
+        <entry key="..\:/git-workspace/CloudTravel/app/src/main/res/layout/fragment_filterfragment.xml" value="0.34148550724637683" />
         <entry key="..\:/git-workspace/CloudTravel/app/src/main/res/layout/fragment_home.xml" value="0.34148550724637683" />
         <entry key="..\:/git-workspace/CloudTravel/app/src/main/res/layout/fragment_profile.xml" value="0.34148550724637683" />
         <entry key="..\:/git-workspace/CloudTravel/app/src/main/res/layout/fragment_search.xml" value="0.34148550724637683" />
+        <entry key="..\:/git-workspace/CloudTravel/app/src/main/res/layout/fragment_sign_up.xml" value="0.34148550724637683" />
+        <entry key="..\:/git-workspace/CloudTravel/app/src/main/res/layout/fragment_sign_up_comfirm.xml" value="0.3619791666666667" />
         <entry key="..\:/git-workspace/CloudTravel/app/src/main/res/layout/item_banner.xml" value="0.34148550724637683" />
+        <entry key="..\:/git-workspace/CloudTravel/app/src/main/res/layout/item_coruse.xml" value="0.3619791666666667" />
         <entry key="..\:/git-workspace/CloudTravel/app/src/main/res/layout/item_main_course.xml" value="0.34148550724637683" />
         <entry key="..\:/git-workspace/CloudTravel/app/src/main/res/menu/bottom_nav_menu.xml" value="0.3619791666666667" />
         <entry key="..\:/git-workspace/CloudTravel/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.173" />

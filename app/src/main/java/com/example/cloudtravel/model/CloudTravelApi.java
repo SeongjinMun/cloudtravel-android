@@ -10,6 +10,15 @@ public interface CloudTravelApi {
     @GET("Course/courseList")
     Single<List<CourseModel>> getCourses(@Query("tags") String tags, @Query("page") int page);
 
+    @GET("Course/mainTopCourseList")
+    Single<List<CourseModel>> getTopCourses();
+
+    @GET("Course/mainMiddleCourseList")
+    Single<List<CourseModel>> getMiddleCourses();
+
+    @GET("Course/mainBottomCourseList")
+    Single<List<CourseModel>> getBottomCourses();
+
     @GET("Banner/mainBannerList")
     Single<List<BannerModel>> getBanners();
 
