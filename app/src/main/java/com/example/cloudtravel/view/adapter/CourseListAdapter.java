@@ -1,5 +1,6 @@
 package com.example.cloudtravel.view.adapter;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,7 +23,9 @@ public class CourseListAdapter extends RecyclerView.Adapter<CourseListAdapter.Co
 
     private final List<CourseModel> courses;
 
+
     public CourseListAdapter(List<CourseModel> courses) {
+        setHasStableIds(true);
         this.courses = courses;
     }
 
@@ -31,20 +34,30 @@ public class CourseListAdapter extends RecyclerView.Adapter<CourseListAdapter.Co
         notifyDataSetChanged();
     }
 
+    public void clear() {
+        courses.clear();
+    }
+
     @NonNull
     @Override
     public CourseViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_main_course, parent, false);
+
+
+
         return new CourseViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull CourseViewHolder holder, int position) {
         final CourseModel model = courses.get(position);
+        String dump = model.getCourseTags().toString();
         holder.title.setText(model.getCourseTitle());
         holder.subTitle.setText(model.getCourseSubTitle());
-        holder.tags.setText(model.getCourseTags());
-        holder.views.setText(model.getCourseViews());
+        dump = dump.replace("전국", "");
+        dump = dump.replace(",", " #");
+        holder.tags.setText(dump);
+        holder.views.setText(Integer.toString((int)model.getCourseViews()));
         holder.rating.setRating(model.getCourseRating());
         holder.image.setClipToOutline(true);
 
@@ -59,9 +72,26 @@ public class CourseListAdapter extends RecyclerView.Adapter<CourseListAdapter.Co
     }
 
     @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+
+    @Override
     public int getItemCount() {
         return courses.size();
     }
+
+    @Override
+    public int getItemViewType(int position) {
+        return position;
+    }
+
+    @Override
+    public void setHasStableIds(boolean hasStableIds) {
+        super.setHasStableIds(hasStableIds);
+    }
+
 
     public static class CourseViewHolder extends RecyclerView.ViewHolder{
         private final TextView title;

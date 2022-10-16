@@ -58,6 +58,7 @@ public class SignUpActivity extends FragmentActivity
 
         final Map<String, String> attributes = new HashMap<>();
         attributes.put("email", email);
+
         AWSMobileClient.getInstance().signUp(userName, password, attributes, null, new Callback<SignUpResult>() {
             @Override
             public void onResult(final SignUpResult signUpResult) {
@@ -68,7 +69,7 @@ public class SignUpActivity extends FragmentActivity
                                 "Confirm sign-up with: " + details.getDestination(), Toast.LENGTH_SHORT).show();
                         setSignUpConfirmFragment();
                     } else {
-                        //makeToast(context, "Sign-up done.");
+                        Toast.makeText(SignUpActivity.this, "else Sign-up done.", Toast.LENGTH_SHORT).show();
                     }
                 });
             }
@@ -100,8 +101,11 @@ public class SignUpActivity extends FragmentActivity
                                 "Confirm sign-up with: " + details.getDestination(), Toast.LENGTH_SHORT).show();
                     } else {
                         Toast.makeText(SignUpActivity.this,
-                                "Sign-up done.", Toast.LENGTH_SHORT).show();
-                        // SignIn and move to MainActivity
+                                "Sign-up done", Toast.LENGTH_SHORT).show();
+
+
+
+
                         _signIn(userName, password);
                     }
                 });

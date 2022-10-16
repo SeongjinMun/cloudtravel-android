@@ -14,7 +14,6 @@ import com.example.cloudtravel.R;
 import com.example.cloudtravel.model.CourseModel;
 import com.example.cloudtravel.view.Util;
 
-
 import java.util.List;
 
 public class MainBottomCourseAdapter extends RecyclerView.Adapter<MainBottomCourseAdapter.CourseViewHolder> {
@@ -69,7 +68,6 @@ public class MainBottomCourseAdapter extends RecyclerView.Adapter<MainBottomCour
             image = (ImageView) itemView.findViewById(R.id.imgView_item);
         }
     }
-
 
 
 }

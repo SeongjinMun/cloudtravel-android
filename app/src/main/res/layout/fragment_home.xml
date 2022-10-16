@@ -11,6 +11,7 @@
         android:id="@+id/constraintLayout"
         android:layout_width="0dp"
         android:layout_height="60dp"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -30,7 +31,7 @@
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-smallcaps"
+            android:fontFamily="@font/primary_font"
             android:text="CloudTravel"
             android:textColor="@color/PrimaryColor"
             android:textSize="35sp"
@@ -46,14 +47,19 @@
         android:id="@+id/constraintLayout2"
         android:layout_width="0dp"
         android:layout_height="200dp"
+        android:layout_marginTop="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
 
         <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/bannerList"
@@ -68,28 +74,77 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/MainTopCourseList"
         android:layout_width="0dp"
-        android:layout_height="130dp"
-        android:layout_marginTop="24dp"
+        android:layout_height="90dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/MainMiddleCourseList"
         android:layout_width="0dp"
-        android:layout_height="130dp"
-        android:layout_marginTop="24dp"
+        android:layout_height="90dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/MainTopCourseList" />
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/MainBottomCourseList"
         android:layout_width="0dp"
-        android:layout_height="130dp"
-        android:layout_marginTop="24dp"
+        android:layout_height="90dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/MainMiddleCourseList" />
+        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/primary_font"
+        android:text="조회수가 많은 코스"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/primary_font"
+        android:text="리뷰가 많은 코스"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/MainTopCourseList" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/primary_font"
+        android:text="평점이 높은 코스"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/MainMiddleCourseList"
+        tools:fontFamily="@font/primary_font" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

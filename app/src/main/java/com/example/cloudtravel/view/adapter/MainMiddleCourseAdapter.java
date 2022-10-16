@@ -1,11 +1,9 @@
 package com.example.cloudtravel.view.adapter;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,11 +14,9 @@ import com.example.cloudtravel.R;
 import com.example.cloudtravel.model.CourseModel;
 import com.example.cloudtravel.view.Util;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class MainMiddleCourseAdapter extends RecyclerView.Adapter<MainMiddleCourseAdapter.CourseViewHolder> {
-
 
     private final List<CourseModel> courses;
 

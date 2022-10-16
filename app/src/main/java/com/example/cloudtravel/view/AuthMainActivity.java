@@ -12,9 +12,7 @@ import com.amazonaws.mobile.client.Callback;
 import com.amazonaws.mobile.client.HostedUIOptions;
 import com.amazonaws.mobile.client.SignInUIOptions;
 import com.amazonaws.mobile.client.UserStateDetails;
-import com.example.cloudtravel.R;
 import com.example.cloudtravel.databinding.ActivityAuthMainBinding;
-import com.example.cloudtravel.databinding.ActivityMainBinding;
 
 public class AuthMainActivity extends AppCompatActivity {
 
@@ -61,6 +59,12 @@ public class AuthMainActivity extends AppCompatActivity {
             @Override
             public void onResult(UserStateDetails details) {
                 Log.d(TAG, "onResult: " + details.getUserState());
+                try {
+                    Log.d("asdasdasd", AWSMobileClient.getInstance().getTokens().getIdToken().getTokenString().toString());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
             }
             @Override
             public void onError(Exception e) {

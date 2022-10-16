@@ -26,7 +26,6 @@ public class MainViewModel extends ViewModel {
     public MutableLiveData<Boolean> bannerLoadError = new MutableLiveData<>();
     public MutableLiveData<Boolean> courseLoadError = new MutableLiveData<>();
     public MutableLiveData<Boolean> loading = new MutableLiveData<>();
-    public MutableLiveData<String> courseTags = new MutableLiveData<>("");
 
     public Service service = Service.getInstance();
 
@@ -70,6 +69,7 @@ public class MainViewModel extends ViewModel {
                         e.printStackTrace();
                     }
                 }));
+
 
         disposable.add(service.getMiddleCourses()
                 .subscribeOn(Schedulers.io())

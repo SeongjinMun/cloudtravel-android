@@ -19,9 +19,6 @@ import com.amazonaws.mobile.client.Callback;
 import com.amazonaws.mobile.client.UserStateDetails;
 import com.example.cloudtravel.databinding.FragmentHomeBinding;
 import com.example.cloudtravel.view.adapter.MainBannerAdapter;
-//import com.example.cloudtravel.view.adapter.MainBottomCourse;
-//import com.example.cloudtravel.view.adapter.MainMiddleCourse;
-//import com.example.cloudtravel.view.adapter.MainTopCourse;
 import com.example.cloudtravel.view.adapter.MainBottomCourseAdapter;
 import com.example.cloudtravel.view.adapter.MainMiddleCourseAdapter;
 import com.example.cloudtravel.view.adapter.MainTopCourseAdapter;
@@ -71,6 +68,7 @@ public class HomeFragment extends Fragment {
         binding.MainBottomCourseList.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false));
 
 
+
         observeViewModel();
     }
 
@@ -82,6 +80,8 @@ public class HomeFragment extends Fragment {
                 public void onResult(UserStateDetails userStateDetails) {
                     switch (userStateDetails.getUserState()){
                         case SIGNED_IN:
+                            Log.d("AWSMobileClient", AWSMobileClient.getInstance().getIdentityId());
+                            Log.d("AWSMobileClient", AWSMobileClient.getInstance().getUsername());
                             Log.d(TAG, "SIGNED_IN");
                             break;
                         case SIGNED_OUT:
@@ -119,6 +119,7 @@ public class HomeFragment extends Fragment {
                 bannerAdapter.updateCourses(bannerModels);
             }
         });
+
 
         viewModel.topCourses.observe(getViewLifecycleOwner(), courseModels -> {
             if (courseModels != null) {

@@ -3,12 +3,14 @@ package com.example.cloudtravel.model;
 import java.util.List;
 
 import io.reactivex.Single;
+import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Service {
-    private static final String BASE_URL = "https://cloudtvl.com/";
+    private static final String BASE_URL = "http://3.38.192.7/";
     private static Service instance;
 
     public CloudTravelApi api = new Retrofit.Builder()
@@ -26,8 +28,8 @@ public class Service {
     }
 
 
-    public Single<List<CourseModel>> getCourses(String tags, int page) {
-        return api.getCourses(tags, page);
+    public Single<List<CourseModel>> getCourses(String tags, String title, int page) {
+        return api.getCourses(tags, title, page);
     }
 
     public Single<List<CourseModel>> getTopCourses() {

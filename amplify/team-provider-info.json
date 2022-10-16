@@ -1,0 +1,22 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-cloudtravel-dev-104120-authRole",
+      "UnauthRoleArn": "arn:aws:iam::519562167864:role/amplify-cloudtravel-dev-104120-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::519562167864:role/amplify-cloudtravel-dev-104120-authRole",
+      "Region": "ap-northeast-2",
+      "DeploymentBucketName": "amplify-cloudtravel-dev-104120-deployment",
+      "UnauthRoleName": "amplify-cloudtravel-dev-104120-unauthRole",
+      "StackName": "amplify-cloudtravel-dev-104120",
+      "StackId": "arn:aws:cloudformation:ap-northeast-2:519562167864:stack/amplify-cloudtravel-dev-104120/f1a4e970-dc94-11ec-a069-0a13bb6cd0e8",
+      "AmplifyAppId": "dyyio7gi869tj"
+    },
+    "categories": {
+      "auth": {
+        "cloudtravelebf72a96": {
+          "oAuthSecretsPathAmplifyAppId": "dyyio7gi869tj"
+        }
+      }
+    }
+  }
+}

@@ -9,7 +9,7 @@ public class CourseModel {
     @SerializedName("rating")
     float courseRating;
     @SerializedName("views")
-    String courseViews;
+    float courseViews;
     @SerializedName("title")
     String courseTitle;
     @SerializedName("subtitle")
@@ -19,7 +19,7 @@ public class CourseModel {
     @SerializedName("tags")
     String courseTags;
 
-    public CourseModel(int courseId, float courseRating, String courseViews,
+    public CourseModel(int courseId, float courseRating, float courseViews,
                        String courseTitle, String courseSubTitle, String courseViewUrl, String courseTags) {
         this.courseId = courseId;
         this.courseRating = courseRating;
@@ -34,11 +34,9 @@ public class CourseModel {
         return courseId;
     }
 
-    public float getCourseRating() {
-        return courseRating;
-    }
+    public float getCourseRating() { return courseRating; }
 
-    public String getCourseViews() {
+    public float getCourseViews() {
         return courseViews;
     }
 

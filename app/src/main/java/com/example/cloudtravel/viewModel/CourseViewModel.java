@@ -1,5 +1,7 @@
 package com.example.cloudtravel.viewModel;
 
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -21,20 +23,25 @@ public class CourseViewModel extends ViewModel {
     public MutableLiveData<Boolean> loading = new MutableLiveData<>();
     public MutableLiveData<Integer> coursePage = new MutableLiveData<>(0);
     public MutableLiveData<String> courseTags = new MutableLiveData<>("");
+    public MutableLiveData<String> searchTitle = new MutableLiveData<>("");
 
     public Service service = Service.getInstance();
 
     private final CompositeDisposable disposable = new CompositeDisposable();
 
+    public void reset() {
+        coursePage.setValue(0);
+    }
 
     public void load() {
         loading.setValue(true);
-        disposable.add(service.getCourses(courseTags.getValue(), coursePage.getValue())
+        disposable.add(service.getCourses(courseTags.getValue(), searchTitle.getValue(), coursePage.getValue())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(new DisposableSingleObserver<List<CourseModel>>() {
                     @Override
                     public void onSuccess(@NonNull List<CourseModel> courseModels) {
+                        Log.d("onSuccess", Integer.toString(coursePage.getValue()));
                         coursePage.setValue(coursePage.getValue()+1);
                         courses.setValue(courseModels);
                         courseLoadError.setValue(false);

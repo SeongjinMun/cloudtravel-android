@@ -3,6 +3,7 @@
     <string name="title_home">홈</string>
     <string name="title_search">탐색</string>
     <string name="title_profile">프로필</string>
+    <string name="special_char2">&lt;</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

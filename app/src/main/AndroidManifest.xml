@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.cloudtravel">
+    package="com.example.cloudtravel" >
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -11,7 +11,11 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.CloudTravel">
+        android:theme="@style/Theme.CloudTravel"
+        android:usesCleartextTraffic="true" >
+        <activity
+            android:name=".view.FilterActivity"
+            android:exported="false" />
         <activity
             android:name=".view.LoginActivity"
             android:exported="false" />
@@ -24,7 +28,7 @@
         <activity
             android:name=".view.AuthMainActivity"
             android:exported="true"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -37,7 +41,7 @@
         <activity
             android:name=".view.MainActivity"
             android:exported="true"
-            android:label="@string/app_name">
+            android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

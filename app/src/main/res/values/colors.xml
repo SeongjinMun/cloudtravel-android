@@ -10,4 +10,5 @@
     <color name="StatusBarColor">#000000</color>
     <color name="PrimaryColor">#2979FF</color>
     <color name="PrimaryVariantColor">#2962FF</color>
+    <color name="Filter">#E1E1E1</color>
 </resources>

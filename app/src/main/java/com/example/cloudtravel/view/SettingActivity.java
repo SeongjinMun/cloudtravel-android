@@ -41,6 +41,7 @@ public class SettingActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         Intent intent = new Intent(SettingActivity.this, MainActivity.class);
+        intent.addFlags(intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }
 

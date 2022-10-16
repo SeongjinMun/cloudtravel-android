@@ -8,7 +8,7 @@ import retrofit2.http.Query;
 
 public interface CloudTravelApi {
     @GET("Course/courseList")
-    Single<List<CourseModel>> getCourses(@Query("tags") String tags, @Query("page") int page);
+    Single<List<CourseModel>> getCourses(@Query("tags") String tags, @Query("title") String title, @Query("page") int page);
 
     @GET("Course/mainTopCourseList")
     Single<List<CourseModel>> getTopCourses();
@@ -22,4 +22,6 @@ public interface CloudTravelApi {
     @GET("Banner/mainBannerList")
     Single<List<BannerModel>> getBanners();
 
+    @GET("User/userUpConform")
+    Single<List<BannerModel>> getUpConform();
 }
