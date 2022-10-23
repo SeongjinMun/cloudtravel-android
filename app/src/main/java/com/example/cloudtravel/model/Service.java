@@ -1,6 +1,8 @@
 package com.example.cloudtravel.model;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.SplittableRandom;
 
 import io.reactivex.Single;
 import okhttp3.OkHttpClient;
@@ -11,6 +13,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Service {
     private static final String BASE_URL = "http://3.38.192.7/";
+//    private static final String BASE_URL = "https://cloudtvl.com/";
     private static Service instance;
 
     public CloudTravelApi api = new Retrofit.Builder()
@@ -26,7 +29,6 @@ public class Service {
         }
         return instance;
     }
-
 
     public Single<List<CourseModel>> getCourses(String tags, String title, int page) {
         return api.getCourses(tags, title, page);

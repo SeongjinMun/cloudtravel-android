@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -42,6 +43,7 @@ public class SearchFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         viewModel = new ViewModelProvider(requireActivity()).get(CourseViewModel.class);
+
         binding=FragmentSearchBinding.inflate(inflater);
         return binding.getRoot();
     }
@@ -71,6 +73,7 @@ public class SearchFragment extends Fragment {
 
         adapter.setHasStableIds(true);
         viewModel.load();
+
 
         binding.courseList.setLayoutManager(new LinearLayoutManager(getActivity()));
         binding.courseList.setAdapter(adapter);

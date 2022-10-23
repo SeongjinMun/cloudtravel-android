@@ -1,5 +1,7 @@
 package com.example.cloudtravel.view;
 
+import static com.amazonaws.mobile.auth.core.internal.util.ThreadUtils.runOnUiThread;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentTransaction;
@@ -18,6 +20,7 @@ import com.amazonaws.mobile.client.results.UserCodeDeliveryDetails;
 import com.example.cloudtravel.R;
 import com.example.cloudtravel.view.fragment.SignUpConfirmFragment;
 import com.example.cloudtravel.view.fragment.SignUpFragment;
+import com.example.cloudtravel.viewModel.UserViewModel;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -29,6 +32,7 @@ public class SignUpActivity extends FragmentActivity
     private static final String TAG = SignUpActivity.class.getSimpleName();
 
     private String userName, password;
+    private UserViewModel userViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,8 +72,13 @@ public class SignUpActivity extends FragmentActivity
                         Toast.makeText(SignUpActivity.this,
                                 "Confirm sign-up with: " + details.getDestination(), Toast.LENGTH_SHORT).show();
                         setSignUpConfirmFragment();
+
                     } else {
                         Toast.makeText(SignUpActivity.this, "else Sign-up done.", Toast.LENGTH_SHORT).show();
+
+
+
+
                     }
                 });
             }
@@ -98,14 +107,10 @@ public class SignUpActivity extends FragmentActivity
                     if (!signUpResult.getConfirmationState()) {
                         final UserCodeDeliveryDetails details = signUpResult.getUserCodeDeliveryDetails();
                         Toast.makeText(SignUpActivity.this,
-                                "Confirm sign-up with: " + details.getDestination(), Toast.LENGTH_SHORT).show();
+                                "확인코드를 전송했습니다: " + details.getDestination(), Toast.LENGTH_SHORT).show();
                     } else {
                         Toast.makeText(SignUpActivity.this,
-                                "Sign-up done", Toast.LENGTH_SHORT).show();
-
-
-
-
+                                "가입이 완료되었습니다", Toast.LENGTH_SHORT).show();
                         _signIn(userName, password);
                     }
                 });
@@ -125,47 +130,6 @@ public class SignUpActivity extends FragmentActivity
 
     }
 
-    private void signIn(String username, String password) {
-        AWSMobileClient.getInstance().signIn(username, password, null, new Callback<SignInResult>() {
-            @Override
-            public void onResult(final SignInResult signInResult) {
-                runOnUiThread(() -> {
-                    Log.d(TAG, "Sign-in callback state: " + signInResult.getSignInState());
-                    switch (signInResult.getSignInState()) {
-                        case DONE:
-                            Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
-                            intent.putExtra("message", "Sign-in done");
-                            intent.addFlags(intent.FLAG_ACTIVITY_CLEAR_TOP);
-                            startActivity(intent);
-                            break;
-                        case SMS_MFA:
-                            Toast.makeText(SignUpActivity.this,
-                                    "Please confirm sign-in with SMS.", Toast.LENGTH_SHORT).show();
-                            break;
-                        case NEW_PASSWORD_REQUIRED:
-                            Toast.makeText(SignUpActivity.this,
-                                    "Please confirm sign-in with new password.", Toast.LENGTH_SHORT).show();
-                            break;
-                        default:
-                            Toast.makeText(SignUpActivity.this,
-                                    "Unsupported sign-in confirmation: " + signInResult.getSignInState(), Toast.LENGTH_SHORT).show();
-                            break;
-                    }
-                });
-            }
-
-            @Override
-            public void onError(Exception e) {
-                Log.e(TAG, "Sign-in error", e);
-                runOnUiThread(() -> {
-                    if (e instanceof AmazonServiceException)
-                        Toast.makeText(SignUpActivity.this,
-                                ((AmazonServiceException) e).getErrorMessage(), Toast.LENGTH_SHORT).show();
-                });
-            }
-        });
-    }
-
     private void _signIn(String username, String password) {
         // Add code here
         AWSMobileClient.getInstance().signIn(username, password, null, new Callback<SignInResult>() {
@@ -176,9 +140,10 @@ public class SignUpActivity extends FragmentActivity
                     switch (signInResult.getSignInState()) {
                         case DONE:
                             Toast.makeText(SignUpActivity.this,
-                                    "Sign-in done.", Toast.LENGTH_SHORT).show();
+                                    "환영합니다", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
                             intent.addFlags(intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            intent.putExtra("mainStatus", 1);
                             startActivity(intent);
                             break;
                         case SMS_MFA:

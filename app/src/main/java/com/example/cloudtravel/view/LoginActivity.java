@@ -31,12 +31,12 @@ public class LoginActivity extends AppCompatActivity implements Validator.Valida
 
     Validator validator;
 
-    @BindView(R.id.loginEmail)
+    @BindView(R.id._loginEmail)
     @NotEmpty
     @Email
     EditText email;
 
-    @BindView(R.id.loginPassword)
+    @BindView(R.id._loginPassword)
     @Password(min = 8, scheme = Password.Scheme.ANY)
     EditText password;
 
@@ -52,6 +52,7 @@ public class LoginActivity extends AppCompatActivity implements Validator.Valida
         validator.setValidationListener(this);
 
         context = this;
+
     }
 
     @Override

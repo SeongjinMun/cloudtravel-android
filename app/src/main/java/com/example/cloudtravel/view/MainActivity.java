@@ -1,5 +1,6 @@
 package com.example.cloudtravel.view;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,11 +13,17 @@ import com.example.cloudtravel.databinding.ActivityMainBinding;
 import com.example.cloudtravel.view.fragment.HomeFragment;
 import com.example.cloudtravel.view.fragment.ProfileFragment;
 import com.example.cloudtravel.view.fragment.SearchFragment;
+import com.example.cloudtravel.viewModel.MainViewModel;
+import com.example.cloudtravel.viewModel.UserViewModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
+import com.google.android.material.navigation.NavigationBarView.OnItemSelectedListener;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -29,6 +36,11 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
     private String fragmentName;
     private MenuItem prevBottomNavigation;
+    private String moveFragment;
+    private MainViewModel viewModel;
+    private UserViewModel userViewModel;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +48,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        viewModel = new ViewModelProvider(this).get(MainViewModel.class);
+        userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
+
+        viewModel.firstOpen.setValue(true);
+        userViewModel.login.setValue(false);
 
         BottomNavigationView navView = findViewById(R.id.nav_view);
 
@@ -52,7 +70,9 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
+
         navView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener(){
+
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
@@ -96,6 +116,13 @@ public class MainActivity extends AppCompatActivity {
                         return true;
                     }
                     case R.id.navigation_profile: {
+
+                        if (viewModel.firstOpen.getValue() && userViewModel.login.getValue()){
+                            viewModel.firstOpen.setValue(false);
+                            Intent intent = new Intent(MainActivity.this, AuthMainActivity.class);
+                            startActivity(intent);
+                        }
+
                         if (fragmentManager.findFragmentByTag("profile") != null){
                             fragmentManager.beginTransaction().show(fragmentManager.findFragmentByTag("profile"))
                                     .commit();

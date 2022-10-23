@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModel;
 import com.example.cloudtravel.model.BannerModel;
 import com.example.cloudtravel.model.CourseModel;
 import com.example.cloudtravel.model.Service;
+import com.example.cloudtravel.view.MainActivity;
 
 import java.util.List;
 
@@ -25,7 +26,9 @@ public class MainViewModel extends ViewModel {
     public MutableLiveData<List<CourseModel>> bottomCourses = new MutableLiveData<>();
     public MutableLiveData<Boolean> bannerLoadError = new MutableLiveData<>();
     public MutableLiveData<Boolean> courseLoadError = new MutableLiveData<>();
+    public MutableLiveData<Boolean> firstOpen = new MutableLiveData<>();
     public MutableLiveData<Boolean> loading = new MutableLiveData<>();
+    public MutableLiveData<String> test = new MutableLiveData<>();
 
     public Service service = Service.getInstance();
 
