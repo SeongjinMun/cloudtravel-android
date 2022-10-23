@@ -3,6 +3,7 @@ package com.example.cloudtravel.view;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.util.Log;
@@ -12,7 +13,9 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
+import com.example.cloudtravel.R;
 import com.example.cloudtravel.databinding.ActivityFilterBinding;
 import com.example.cloudtravel.model.BannerModel;
 
@@ -21,11 +24,12 @@ import java.util.List;
 
 public class FilterActivity extends AppCompatActivity {
 
+    Context context;
     final String TAG_NONE = "TAG_TEXT_NONE";
     ActivityFilterBinding binding;
     String search = "";
-    boolean tagInput = false;
     List<String> tags = new ArrayList<String>();
+    boolean tagInput = false;
     boolean tagCheck[] = { false, false, false, false };
 
     @Override
@@ -127,6 +131,7 @@ public class FilterActivity extends AppCompatActivity {
 
         binding.cancle.setOnClickListener(v->{
             tagInput=false;
+            binding.addTag.setBackgroundResource(R.drawable.addtag);
             binding.editText1.setHint("검색어를 입력해주세요");
             binding.cancle.setVisibility(View.GONE);
         });
@@ -135,6 +140,7 @@ public class FilterActivity extends AppCompatActivity {
             tagCheck();
             tagInput=true;
             imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
+            binding.addTag.setBackgroundResource(R.drawable.nonetag);
             binding.editText1.setHint("#태그를 입력해주세요");
             binding.editText1.setText("");
             binding.cancle.setVisibility(View.VISIBLE);
