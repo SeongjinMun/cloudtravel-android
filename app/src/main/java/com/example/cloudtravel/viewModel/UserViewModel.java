@@ -5,7 +5,6 @@ import android.util.Log;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.example.cloudtravel.model.CommonModel;
 import com.example.cloudtravel.model.Service;
 import com.example.cloudtravel.model.UserModel;
 
@@ -127,8 +126,11 @@ public class UserViewModel extends ViewModel{
             public void onFailure(Call<UserModel> call, Throwable t) {
                 Log.d("onFailure", t.toString());
                 loading.setValue(false);
-                userSyn.setValue(false);
-                login.setValue(false);
+                if (!userSyn.getValue()){
+                    userSyn.setValue(false);
+                    login.setValue(false);
+                }
+
             }
         });
 
@@ -161,9 +163,53 @@ public class UserViewModel extends ViewModel{
                             userView.setValue(response.body().getUserView());
                         }
                     }
+                    login.setValue(true);
                     loading.setValue(false);
                 }
 
+            }
+
+            @Override
+            public void onFailure(Call<UserModel> call, Throwable t) {
+                Log.d("onFailure", t.toString());
+
+            }
+        });
+
+    }
+
+    public void updateUserInfo(){
+
+        HashMap<String, Object> input = new HashMap<>();
+        input.put("email", email.getValue());
+        input.put("token", email.getValue());
+        input.put("nickname", nickName.getValue());
+        input.put("birthdate", birthdate.getValue());
+        input.put("sex", userSex.getValue());
+
+        service.api.getUserSynConform(input).enqueue(new Callback<UserModel>() {
+            @Override
+            public void onResponse(Call<UserModel> call, Response<UserModel> response) {
+                if (response.isSuccessful()){
+                    if (response.body().getResponseType() == REQUEST_OK){
+                        if (response.body().getUserNickname() != null){
+                            nickName.setValue(response.body().getUserNickname());
+                        }
+                        if (response.body().getUserBirthdate() != null){
+                            birthdate.setValue(response.body().getUserBirthdate());
+                        }
+                        if (response.body().getUserSex() != 0){
+                            userSex.setValue(response.body().getUserSex());
+                        }
+                        if (response.body().getUserExp() != 0){
+                            userExp.setValue(response.body().getUserExp());
+                        }
+                        if (response.body().getUserView() != null){
+                            userView.setValue(response.body().getUserView());
+                        }
+                    }
+                    loading.setValue(false);
+                }
             }
 
             @Override

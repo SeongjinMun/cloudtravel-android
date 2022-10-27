@@ -1,0 +1,34 @@
+type Mutation {
+      putPostWithPhoto(
+          id: String!,
+          author: String!,
+          title: String,
+          content: String,
+          url: String,
+          uptime: String!,
+          photo: S3ObjectInput
+          version: Int!
+      ): Post
+  }
+  type S3Object {
+       bucket: String!
+       key: String!
+       region: String!
+  }
+  input S3ObjectInput {
+       bucket: String!
+       key: String!
+       region: String!
+       localUri: String
+       mimeType: String
+  }
+  type Post @model @key(fields:["id","uptime"]){
+      id: String!
+      author: String!
+      title: String
+      content: String
+      url: String
+      uptime: String!
+      photo: S3Object
+      version: Int!
+  }

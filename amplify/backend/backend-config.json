@@ -28,5 +28,29 @@
         ]
       }
     }
+  },
+  "api": {
+    "cloudtravel": {
+      "output": {
+        "authConfig": {
+          "defaultAuthentication": {
+            "authenticationType": "AMAZON_COGNITO_USER_POOLS",
+            "userPoolConfig": {
+              "userPoolId": "authcloudtravelebf72a96"
+            }
+          },
+          "additionalAuthenticationProviders": []
+        }
+      },
+      "dependsOn": [
+        {
+          "category": "auth",
+          "resourceName": "cloudtravelebf72a96",
+          "attributes": [
+            "UserPoolId"
+          ]
+        }
+      ]
+    }
   }
 }

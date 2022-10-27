@@ -2,19 +2,16 @@ package com.example.cloudtravel.view.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
-
 import com.example.cloudtravel.R;
-import com.example.cloudtravel.databinding.FragmentHomeBinding;
 import com.example.cloudtravel.databinding.FragmentSignUpComfirmBinding;
 import com.mobsandgeeks.saripaar.annotation.NotEmpty;
 
@@ -54,23 +51,14 @@ public class SignUpConfirmFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_sign_up_comfirm, container, false);
         ButterKnife.bind(this, view);
-        binding= FragmentSignUpComfirmBinding.inflate(inflater);
-        return binding.getRoot();
+        return view;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        binding.confirmCode.requestFocus();
 
-        binding.SignUpConfirmButton.setOnClickListener(v -> {
-            if (getActivity() != null && getActivity().getCurrentFocus() != null)
-            {
-                InputMethodManager inputManager = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-                inputManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
-            }
-        });
     }
 
     @Override

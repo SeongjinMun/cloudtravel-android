@@ -1,0 +1,11 @@
+{
+  "AppSyncApiName": "cloudtravel",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthCognitoUserPoolId": {
+    "Fn::GetAtt": [
+      "authcloudtravelebf72a96",
+      "Outputs.UserPoolId"
+    ]
+  }
+}

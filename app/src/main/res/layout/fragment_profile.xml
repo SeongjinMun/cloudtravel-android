@@ -8,98 +8,132 @@
     android:background="#FFFFFF"
     tools:context=".view.fragment.ProfileFragment">
 
-    <TextView
-        android:id="@+id/text_profile"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:text="profile"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/registrationButton2"
+        android:layout_width="340dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="250dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/nonetag"
+        android:fontFamily="@font/primary_font"
+        android:text="로그인"
+        android:textColor="@android:color/white"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/setting_btn"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="32dp"
+        android:background="@android:drawable/title_bar"
+        android:fontFamily="@font/primary_font"
+        android:text="수정하기"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.688" />
+        app:layout_constraintTop_toBottomOf="@+id/textView21" />
 
-    <ImageView
-        android:id="@+id/profile_set"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="25dp"
-        android:src="@drawable/profile"
+    <TextView
+        android:id="@+id/textView19"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="55dp"
+        android:fontFamily="@font/primary_font"
+        android:gravity="center"
+        android:text="닉네임"
+        android:textSize="25sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView8"
-        android:layout_width="wrap_content"
+        android:id="@+id/textView20"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="46dp"
         android:fontFamily="@font/primary_font"
-        android:text="게스트사용자"
-        android:textSize="20sp"
-        app:layout_constraintStart_toEndOf="@+id/profile_set"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="97dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="25dp"
-        android:text="글목록"
-        app:layout_constraintEnd_toStartOf="@+id/button2"
-        app:layout_constraintHorizontal_bias="0.5"
+        android:gravity="center"
+        android:text="성별"
+        android:textSize="25dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profile_set" />
+        app:layout_constraintTop_toBottomOf="@+id/textView19" />
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="97dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="25dp"
-        android:text="댓글"
-        app:layout_constraintEnd_toStartOf="@+id/button3"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/button1"
-        app:layout_constraintTop_toBottomOf="@+id/profile_set" />
-
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="97dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="25dp"
-        android:text="즐겨찾기"
+    <Spinner
+        android:id="@+id/userSexSpinner3"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="36dp"
+        android:background="@drawable/addtag"
+        android:entries="@array/userSex"
+        android:paddingStart="60dp"
+        android:theme="@style/spinnerItemStyle"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/button3"
-        app:layout_constraintTop_toBottomOf="@+id/profile_set" />
+        app:layout_constraintStart_toEndOf="@+id/textView20"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextUserName4" />
+
+    <EditText
+        android:id="@+id/editTextTextUserBirth3"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="36dp"
+        android:background="@drawable/addtag"
+        android:ems="10"
+        android:fontFamily="@font/primary_font"
+        android:gravity="center"
+        android:hint="예시:19980217"
+        android:inputType="textPersonName"
+        android:textColorHighlight="#2196F3"
+        android:textColorLink="#2196F3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView21"
+        app:layout_constraintTop_toBottomOf="@+id/userSexSpinner3"
+        tools:textColorHint="@color/PrimaryColor" />
+
+    <TextView
+        android:id="@+id/textView21"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="46dp"
+        android:fontFamily="@font/primary_font"
+        android:gravity="center"
+        android:text="생년월일"
+        android:textSize="25dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView20" />
 
     <Button
-        android:id="@+id/button3"
-        android:layout_width="97dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="25dp"
-        android:text="완주코스"
-        app:layout_constraintEnd_toStartOf="@+id/button4"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/button2"
-        app:layout_constraintTop_toBottomOf="@+id/profile_set" />
-
-    <ImageView
-        android:id="@+id/login_button"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="25dp"
-        android:src="@drawable/login"
-        android:tint="@color/black"
+        android:id="@+id/logout_btn2"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="20dp"
+        android:background="@android:drawable/title_bar"
+        android:fontFamily="@font/primary_font"
+        android:text="로그아웃"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/setting_btn" />
+
+    <EditText
+        android:id="@+id/editTextTextUserName4"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="52dp"
+        android:background="@drawable/addtag"
+        android:ems="10"
+        android:fontFamily="@font/primary_font"
+        android:gravity="center"
+        android:inputType="textPersonName"
+        android:textColorHighlight="#2196F3"
+        android:textColorLink="#2196F3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView19"
         app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

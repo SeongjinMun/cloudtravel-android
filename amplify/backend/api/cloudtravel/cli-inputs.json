@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "serviceConfiguration": {
+    "apiName": "cloudtravel",
+    "serviceName": "AppSync",
+    "gqlSchemaPath": "C:\\git-workspace\\CloudTravel\\amplify\\backend\\api\\cloudtravel\\schema.graphql",
+    "defaultAuthType": {
+      "mode": "AMAZON_COGNITO_USER_POOLS",
+      "cognitoUserPoolId": "authcloudtravelebf72a96"
+    },
+    "conflictResolution": {},
+    "additionalAuthTypes": []
+  }
+}

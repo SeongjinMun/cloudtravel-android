@@ -12,14 +12,12 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.cloudtravel.R;
+import com.amazonaws.mobile.client.AWSMobileClient;
 import com.example.cloudtravel.databinding.FragmentProfileBinding;
 import com.example.cloudtravel.view.AuthMainActivity;
-import com.example.cloudtravel.view.FilterActivity;
-import com.example.cloudtravel.view.SettingActivity;
+import com.example.cloudtravel.view.MainActivity;
 import com.example.cloudtravel.viewModel.MainViewModel;
 import com.example.cloudtravel.viewModel.UserViewModel;
 
@@ -41,23 +39,60 @@ public class ProfileFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        observeViewModel();
         Log.d("onViewCreated", userViewModel.token.getValue());
 
-
-        binding.loginButton.setOnClickListener(v->{
+        if (!userViewModel.login.getValue()){
+            visible(false);
             Intent intent = new Intent(getActivity(), AuthMainActivity.class);
             intent.addFlags(intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
+        }else {
+            visible(true);
+        }
+
+
+//        binding.loginButton.setOnClickListener(v->{
+//            Intent intent = new Intent(getActivity(), AuthMainActivity.class);
+//            intent.addFlags(intent.FLAG_ACTIVITY_CLEAR_TOP);
+//            startActivity(intent);
+//        });
+
+//        binding.profileSet.setOnClickListener(v->{
+//            Intent intent = new Intent(getActivity(), SettingActivity.class);
+//            intent.putExtra("eamil", userViewModel.email.getValue());
+//            intent.putExtra("token", userViewModel.token.getValue());
+//            intent.addFlags(intent.FLAG_ACTIVITY_CLEAR_TOP);
+//            startActivityForResult(intent, 1);
+//        });
+
+        binding.logoutBtn2.setOnClickListener(v->{
+            AWSMobileClient.getInstance().signOut();
+            userViewModel.userSyn.setValue(false);
+            userViewModel.login.setValue(false);
+            Intent intent = new Intent(getActivity(), MainActivity.class);
+            intent.addFlags(intent.FLAG_ACTIVITY_CLEAR_TOP);
+            Toast.makeText(getActivity(), "로그아웃 되었습니다", Toast.LENGTH_SHORT).show();
         });
 
-        binding.profileSet.setOnClickListener(v->{
-            Intent intent = new Intent(getActivity(), SettingActivity.class);
-            intent.putExtra("eamil", userViewModel.email.getValue());
-            intent.putExtra("token", userViewModel.token.getValue());
-            intent.addFlags(intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivityForResult(intent, 1);
+        binding.settingBtn.setOnClickListener(v->{
+            if (binding.editTextTextUserName4.toString() != null){
+                userViewModel.nickName.setValue(binding.editTextTextUserName4.toString());
+            }
+            if (binding.editTextTextUserBirth3.toString() != null){
+                userViewModel.birthdate.setValue(binding.editTextTextUserBirth3.toString());
+            }
+//            if ()
+
+            Log.d("test", Integer.toString(binding.userSexSpinner3.getId()));
+
+
+            userViewModel.userSex.setValue(binding.userSexSpinner3.getId());
+            userViewModel.updateUserInfo();
+
+
         });
+
     }
 
     @Override
@@ -90,11 +125,44 @@ public class ProfileFragment extends Fragment {
         }
     }
 
+    public void visible(boolean btn){
+        if (btn){
 
+        }else {
+
+        }
+    }
+
+    @Override
+    public void onResume() {
+        if (userViewModel.login.getValue()){
+            Log.d("userViewModel", "OKOK");
+        }
+        visible(userViewModel.login.getValue());
+        super.onResume();
+    }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
     }
+
+    private void observeViewModel() {
+        userViewModel.login.observe(getViewLifecycleOwner(), login -> {
+            if (login != null & userViewModel.login.getValue()){
+                visible(userViewModel.login.getValue());
+            }
+        });
+
+        userViewModel.email.observe(getViewLifecycleOwner(), email -> {
+            if (email != null){
+                binding.editTextTextUserName4.setText(userViewModel.email.getValue());
+            }
+        });
+
+    }
+
+
+
 }
